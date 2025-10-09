@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation"
 import { getUserFromStorage } from "@/lib/auth"
 import { SidebarProvider } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/app-sidebar"
-import { AppHeader } from "@/components/app-header"
+import { AppHeader } from "@/components/app-header/app-header"
 
 export default function DashboardLayout({
   children,

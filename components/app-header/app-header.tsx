@@ -31,6 +31,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { SidebarTrigger } from "@/components/ui/sidebar"
 import { ModeToggle } from "@/components/mode-toggle"
 import { Badge } from "@/components/ui/badge"
+import StatusDropdown from "./status-dropdown"
 
 interface AppHeaderProps {
   sticky?: boolean
@@ -71,7 +72,7 @@ export function AppHeader({ sticky = true }: AppHeaderProps) {
           sticky && "sticky top-0 z-40",
         )}
       >
-        <div className="flex items-center gap-3">
+        {/* <div className="flex items-center gap-3">
           <SidebarTrigger className="h-9 w-9" />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -92,7 +93,9 @@ export function AppHeader({ sticky = true }: AppHeaderProps) {
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-        </div>
+        </div> */}
+
+        <StatusDropdown />
 
         <div className="flex-1 max-w-md mx-auto hidden md:block">
           <div className="relative">
