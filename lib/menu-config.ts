@@ -14,7 +14,7 @@ export function getMenuItems(role: UserRole): MenuItem[] {
     { title: "Dashboard", icon: LayoutDashboard, href: "/dashboard/agent" },
     { title: "Call Center", icon: Phone, href: "/dashboard/call-center" },
     { title: "Missed Calls", icon: PhoneMissed, href: "/dashboard/missed-calls" },
-    { title: "Reports", icon: FileText, href: "/dashboard/reports" },
+    // { title: "Reports", icon: FileText, href: "/dashboard/reports" },
     ...sharedItems,
   ]
 
