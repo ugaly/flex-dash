@@ -1126,7 +1126,6 @@ export default function MissedCallsPage() {
         return <ArrowDown className="ml-2 h-4 w-4" />
     }
 
-    // Stats for the header
     const totalMissedCalls = mockData.length
     const totalVoicemails = mockData.filter(row => row.hasVoicemail).length
     const recentCalls = mockData.filter(row => {
@@ -1137,63 +1136,13 @@ export default function MissedCallsPage() {
 
     return (
         <div className="h-screen flex relative bg-background">
-            {/* Main Content Section */}
             <div
                 className="relative transition-all duration-300 ease-in-out flex flex-col"
                 style={{ width: showPanel ? `${100 - panelWidth}%` : "100%" }}
             >
-                {/* Enhanced Blue Header */}
-                {/* <div className="bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 p-6 flex items-center justify-between shadow-lg">
-                    <div className="flex items-center gap-4">
-                        <div className="p-3 bg-white/20 rounded-2xl backdrop-blur-sm">
-                            <PhoneMissed className="h-8 w-8 text-white" />
-                        </div>
-                        <div className="text-white">
-                            <h1 className="text-3xl font-bold mb-1">Missed Calls</h1>
-                            <p className="text-blue-100 opacity-90">Manage and track all missed call activities</p>
-                        </div>
-                    </div>
 
-                    <div className="flex items-center gap-4">
-                        <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 min-w-[140px] border border-white/20">
-                            <div className="flex items-center gap-2 text-white/90 mb-1">
-                                <Phone className="h-4 w-4" />
-                                <span className="text-sm font-medium">Total Missed</span>
-                            </div>
-                            <div className="text-2xl font-bold text-white">{totalMissedCalls}</div>
-                        </div>
-
-                        <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 min-w-[140px] border border-white/20">
-                            <div className="flex items-center gap-2 text-white/90 mb-1">
-                                <Voicemail className="h-4 w-4" />
-                                <span className="text-sm font-medium">Voicemails</span>
-                            </div>
-                            <div className="text-2xl font-bold text-white">{totalVoicemails}</div>
-                        </div>
-
-                        <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 min-w-[140px] border border-white/20">
-                            <div className="flex items-center gap-2 text-white/90 mb-1">
-                                <Clock className="h-4 w-4" />
-                                <span className="text-sm font-medium">Today</span>
-                            </div>
-                            <div className="text-2xl font-bold text-white">{recentCalls}</div>
-                        </div>
-                    </div>
-
-                    <Button
-                        variant="secondary"
-                        size="icon"
-                        onClick={toggleVisibility}
-                        className="h-12 w-12 rounded-2xl bg-white/20 hover:bg-white/30 border-white/30 backdrop-blur-sm"
-                    >
-                        {showPanel ? <ChevronRight className="h-6 w-6 text-white" /> : <ChevronLeft className="h-6 w-6 text-white" />}
-                    </Button>
-                </div> */}
-
-                {/* Content */}
                 <div className="flex-1 overflow-auto p-6">
                     <div className="bg-card  border border-border ">
-                        {/* Enhanced Table Header */}
                         <div className="flex items-center justify-between p-6 border-b border-border bg-gradient-to-r from-slate-50 to-blue-50/30">
                             <div className="flex items-center gap-3">
                                 <div className="p-2 bg-blue-100 rounded-lg">
@@ -1297,7 +1246,6 @@ export default function MissedCallsPage() {
                             )}
                         </div> */}
 
-                        {/* Entries Selector */}
                         <div className="flex items-center justify-between p-4 border-b border-border bg-gray-50/50">
                             <div className="flex items-center gap-2">
                                 <span className="text-sm text-gray-600">Show</span>
@@ -1325,7 +1273,6 @@ export default function MissedCallsPage() {
                             </Badge>
                         </div>
 
-                        {/* Enhanced Table with Icons */}
                         <Table>
                             <TableHeader>
                                 <TableRow className="bg-gradient-to-r from-blue-50 to-indigo-50/30 hover:bg-blue-50">
@@ -1398,7 +1345,7 @@ export default function MissedCallsPage() {
                                         </TableCell>
                                         <TableCell>
                                             {row.hasVoicemail ? (
-                                                <Button variant="outline" size="sm" className="h-8 gap-2 bg-green-50 border-green-200 text-green-700 hover:bg-green-100">
+                                                <Button variant="outline" size="sm"className="h-8 gap-2 bg-green-50 border-green-200 text-green-700 hover:text-gray-900 hover:bg-slate-100 cursor-pointer transition-colors">
                                                     <Play className="h-3 w-3" />
                                                     Play Voicemail
                                                 </Button>
@@ -1411,11 +1358,11 @@ export default function MissedCallsPage() {
                                         </TableCell>
                                         <TableCell>
                                             <div className="flex items-center gap-2 justify-center">
-                                                <Button variant="outline" size="sm" className="h-8 gap-2 bg-blue-50 border-blue-200 text-blue-700 hover:bg-blue-100">
+                                                <Button variant="outline" size="sm" className="h-8 gap-2 bg-blue-50 border-blue-200 text-blue-700 hover:text-gray-900 hover:bg-slate-100 cursor-pointer transition-colors">
                                                     <Phone className="h-3 w-3" />
                                                     Call Back
                                                 </Button>
-                                                <Button variant="outline" size="sm" className="h-8 gap-2 bg-gray-50 border-gray-200 text-gray-700 hover:bg-gray-100">
+                                                <Button variant="outline" size="sm" className="h-8 gap-2 bg-gray-50 border-gray-200 text-gray-700 hover:text-gray-900 hover:bg-slate-100 cursor-pointer transition-colors">
                                                     <Mail className="h-3 w-3" />
                                                     Email
                                                 </Button>
@@ -1426,7 +1373,6 @@ export default function MissedCallsPage() {
                             </TableBody>
                         </Table>
 
-                        {/* Pagination */}
                         <div className="flex items-center justify-between p-4 border-t border-border bg-gray-50/50">
                             <div className="text-sm text-gray-600">
                                 Showing {startIndex + 1} to {Math.min(endIndex, totalEntries)} of {totalEntries} entries
@@ -1456,8 +1402,8 @@ export default function MissedCallsPage() {
                                                     onClick={() => setCurrentPage(pageNum)}
                                                     isActive={currentPage === pageNum}
                                                     className={`cursor-pointer ${currentPage === pageNum
-                                                            ? "bg-blue-600 text-white hover:bg-blue-700"
-                                                            : "hover:bg-blue-50"
+                                                        ? "bg-blue-600 text-white hover:bg-blue-700"
+                                                        : "hover:bg-blue-50"
                                                         }`}
                                                 >
                                                     {pageNum}
@@ -1478,7 +1424,6 @@ export default function MissedCallsPage() {
                 </div>
             </div>
 
-            {/* Shared Call Manager Panel */}
             {showPanel && <SharedCallManagerPanel />}
         </div>
     )

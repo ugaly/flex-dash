@@ -161,7 +161,7 @@ export default function CallCenterPage() {
         {/* WebView iframe */}
         <div className="h-full rounded-2xl overflow-hidden border border-border/50 m-4">
           <iframe
-            src="https://nbcconnect.nbc.co.tz"
+            src="https://flxcc.flex.co.tz/flex-chat/public/login"
             className="w-full h-full"
             title="Call Center"
             sandbox="
