@@ -72,8 +72,9 @@ export function AppHeader({ sticky = true }: AppHeaderProps) {
           sticky && "sticky top-0 z-40",
         )}
       >
+                  <SidebarTrigger className="h-9 w-9" />
+
         {/* <div className="flex items-center gap-3">
-          <SidebarTrigger className="h-9 w-9" />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" size="sm" className="h-9 gap-2 bg-transparent">
