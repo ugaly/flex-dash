@@ -22,9 +22,9 @@ const META_THEME_COLORS = {
 }
 
 export const metadata: Metadata = {
-  title: "Frlex - Professional System",
+  title: "Flex - Professional System",
   description: "Professional management system",
-  generator: "v0.app",
+  generator: "Flex",
 }
 
 export default function RootLayout({
