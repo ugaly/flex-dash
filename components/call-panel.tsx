@@ -729,13 +729,14 @@ export function CallPanel({ onClose }: { onClose?: () => void }) {
                   key={item.digit}
                   variant="outline"
                   onClick={() => handleDialPad(item.digit)}
-                  className="h-14 flex flex-col justify-center items-center border-gray-300 hover:bg-blue-50 text-gray-900"
+                  className="h-14 flex flex-col justify-center items-center border-gray-300 bg-gray-100 border  hover:bg-blue-50 text-gray-900 leading-none"
                 >
-                  <span className="text-lg font-semibold">{item.digit}</span>
+                  <span className="text-lg font-semibold leading-none">{item.digit}</span>
                   {item.letters && (
-                    <span className="text-[10px] text-gray-500 mt-0.5">{item.letters}</span>
+                    <span className="text-[10px] text-gray-500 -mt-1 leading-none">{item.letters}</span>
                   )}
                 </Button>
+
               ))}
             </div>
 
