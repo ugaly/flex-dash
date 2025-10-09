@@ -72,30 +72,7 @@ export function AppHeader({ sticky = true }: AppHeaderProps) {
           sticky && "sticky top-0 z-40",
         )}
       >
-                  <SidebarTrigger className="h-9 w-9" />
-
-        {/* <div className="flex items-center gap-3">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm" className="h-9 gap-2 bg-transparent">
-                <div className={cn("w-2 h-2 rounded-full", status === "active" ? "bg-green-500" : "bg-gray-400")} />
-                <span className="capitalize">{status}</span>
-                <ChevronDown className="h-3 w-3 opacity-50" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" className="w-40">
-              <DropdownMenuItem onClick={() => setStatus("active")}>
-                <div className="w-2 h-2 rounded-full bg-green-500 mr-2" />
-                Active
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setStatus("inactive")}>
-                <div className="w-2 h-2 rounded-full bg-gray-400 mr-2" />
-                Inactive
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div> */}
-
+        <SidebarTrigger className="h-9 w-9" />
         <StatusDropdown />
 
         <div className="flex-1 max-w-md mx-auto hidden md:block">
@@ -241,35 +218,35 @@ export function AppHeader({ sticky = true }: AppHeaderProps) {
           </DialogHeader>
 
           {/* BODY */}
-<div className="flex flex-1 h-[calc(85vh-120px)] min-h-0">
-  {/* LEFT SIDEBAR */}
-  <div className="w-64 border-r border-gray-200 bg-gray-50 p-4 overflow-y-auto flex-shrink-0">
-    <h3 className="text-sm font-semibold mb-3 text-gray-700 uppercase tracking-wide">
-      Categories
-    </h3>
-    <div className="space-y-1">
-      {searchCategories.map((category) => {
-        const Icon = category.icon
-        const isActive = selectedCategory === category.name
-        return (
-          <button
-            key={category.name}
-            onClick={() => setSelectedCategory(category.name)}
-            className={cn(
-              "w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors",
-              isActive
-                ? "bg-blue-600 text-white shadow-sm"
-                : "text-gray-700 hover:bg-gray-200 hover:text-gray-900"
-            )}
-          >
-            <Icon className="h-4 w-4" />
-            <span className="font-medium">{category.name}</span>
-          </button>
-        )
-      })}
-    </div>
+          <div className="flex flex-1 h-[calc(85vh-120px)] min-h-0">
+            {/* LEFT SIDEBAR */}
+            <div className="w-64 border-r border-gray-200 bg-gray-50 p-4 overflow-y-auto flex-shrink-0">
+              <h3 className="text-sm font-semibold mb-3 text-gray-700 uppercase tracking-wide">
+                Categories
+              </h3>
+              <div className="space-y-1">
+                {searchCategories.map((category) => {
+                  const Icon = category.icon
+                  const isActive = selectedCategory === category.name
+                  return (
+                    <button
+                      key={category.name}
+                      onClick={() => setSelectedCategory(category.name)}
+                      className={cn(
+                        "w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors",
+                        isActive
+                          ? "bg-blue-600 text-white shadow-sm"
+                          : "text-gray-700 hover:bg-gray-200 hover:text-gray-900"
+                      )}
+                    >
+                      <Icon className="h-4 w-4" />
+                      <span className="font-medium">{category.name}</span>
+                    </button>
+                  )
+                })}
+              </div>
 
-    {/* <div className="mt-6 p-3 rounded-lg bg-blue-50 border border-blue-200">
+              {/* <div className="mt-6 p-3 rounded-lg bg-blue-50 border border-blue-200">
       <p className="text-xs font-medium text-gray-700 mb-2">
         Quick Stats
       </p>
@@ -284,79 +261,79 @@ export function AppHeader({ sticky = true }: AppHeaderProps) {
         </div>
       </div>
     </div> */}
-  </div>
+            </div>
 
-  {/* MAIN CONTENT AREA */}
-  <div className="flex-1 p-6 overflow-y-auto min-w-0">
-    {/* Search bar inside modal */}
-    <div className="relative mb-6">
-      <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" />
-      <Input
-        placeholder={`Search in ${selectedCategory}...`}
-        className="pl-10 h-12 text-sm bg-white border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded-lg"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-        autoFocus
-      />
-      {searchQuery && (
-        <Button
-          variant="ghost"
-          size="sm"
-          className="absolute right-2 top-1/2 -translate-y-1/2 h-7 w-7 p-0"
-          onClick={() => setSearchQuery("")}
-        >
-          ×
-        </Button>
-      )}
-    </div>
+            {/* MAIN CONTENT AREA */}
+            <div className="flex-1 p-6 overflow-y-auto min-w-0">
+              {/* Search bar inside modal */}
+              <div className="relative mb-6">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" />
+                <Input
+                  placeholder={`Search in ${selectedCategory}...`}
+                  className="pl-10 h-12 text-sm bg-white border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded-lg"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  autoFocus
+                />
+                {searchQuery && (
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="absolute right-2 top-1/2 -translate-y-1/2 h-7 w-7 p-0"
+                    onClick={() => setSearchQuery("")}
+                  >
+                    ×
+                  </Button>
+                )}
+              </div>
 
-    {/* Search Results */}
-    <div className="space-y-3">
-      {searchQuery ? (
-        <>
-          {[1, 2, 3, 4, 5, 6].map((item) => (
-            <div
-              key={item}
-              className="p-4 rounded-lg border border-gray-200 bg-white hover:border-blue-300 hover:shadow-sm transition-colors cursor-pointer"
-            >
-              <div className="flex items-start gap-3">
-                <div className="w-8 h-8 rounded bg-blue-100 flex items-center justify-center flex-shrink-0">
-                  <Search className="h-4 w-4 text-blue-600" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h4 className="font-medium text-sm mb-1 text-gray-900">
-                    Result {item} for "{searchQuery}"
-                  </h4>
-                  <p className="text-xs text-gray-600 mb-2">
-                    This is a sample search result in {selectedCategory} category.
-                  </p>
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
-                      {selectedCategory}
-                    </span>
-                    <span className="text-xs text-gray-500">
-                      2 mins ago
-                    </span>
+              {/* Search Results */}
+              <div className="space-y-3">
+                {searchQuery ? (
+                  <>
+                    {[1, 2, 3, 4, 5, 6].map((item) => (
+                      <div
+                        key={item}
+                        className="p-4 rounded-lg border border-gray-200 bg-white hover:border-blue-300 hover:shadow-sm transition-colors cursor-pointer"
+                      >
+                        <div className="flex items-start gap-3">
+                          <div className="w-8 h-8 rounded bg-blue-100 flex items-center justify-center flex-shrink-0">
+                            <Search className="h-4 w-4 text-blue-600" />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <h4 className="font-medium text-sm mb-1 text-gray-900">
+                              Result {item} for "{searchQuery}"
+                            </h4>
+                            <p className="text-xs text-gray-600 mb-2">
+                              This is a sample search result in {selectedCategory} category.
+                            </p>
+                            <div className="flex items-center gap-2">
+                              <span className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
+                                {selectedCategory}
+                              </span>
+                              <span className="text-xs text-gray-500">
+                                2 mins ago
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </>
+                ) : (
+                  <div className="flex flex-col items-center justify-center py-12 text-center">
+                    <div className="w-16 h-16 rounded-lg bg-blue-100 flex items-center justify-center mb-4">
+                      <Search className="h-8 w-8 text-blue-600" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Start Your Search</h3>
+                    <p className="text-sm text-gray-600 max-w-sm">
+                      Type in the search box above to find items in {selectedCategory}.
+                    </p>
                   </div>
-                </div>
+                )}
               </div>
             </div>
-          ))}
-        </>
-      ) : (
-        <div className="flex flex-col items-center justify-center py-12 text-center">
-          <div className="w-16 h-16 rounded-lg bg-blue-100 flex items-center justify-center mb-4">
-            <Search className="h-8 w-8 text-blue-600" />
           </div>
-          <h3 className="text-lg font-semibold text-gray-900 mb-2">Start Your Search</h3>
-          <p className="text-sm text-gray-600 max-w-sm">
-            Type in the search box above to find items in {selectedCategory}.
-          </p>
-        </div>
-      )}
-    </div>
-  </div>
-</div>
         </DialogContent>
       </Dialog>
     </>

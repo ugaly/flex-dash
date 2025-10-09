@@ -96,17 +96,17 @@ export function AppSidebar() {
                   asChild
                   isActive={isActive}
                   className={cn(
-                    "transition-colors",
+                    "transition-colors mx-auto",
                     state === "collapsed" && [
                       "h-10 w-10 justify-center p-0 mx-auto rounded-md",
                       isActive && "bg-blue-100"
                     ],
                     state !== "collapsed" && [
-                      "h-9 justify-start px-3 rounded-md",
+                      "h-12 justify-start px-3 rounded-md",
                       isActive && "bg-blue-100 text-blue-700"
                     ],
                     !isActive && [
-                      "hover:bg-gray-100"
+                      "hover:bg-gray-200"
                     ]
                   )}
                 >
