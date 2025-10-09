@@ -12,7 +12,7 @@ export default function CallCenterPage() {
   const [isFullscreen, setIsFullscreen] = useState(false)
 
   return (
-    <div className="h-[calc(100vh-4rem)] flex relative">
+    <div className="h-full flex relative">
       {/* WebView Section */}
       <div
         className={cn("relative transition-all duration-300 ease-in-out", isFullscreen && "fixed inset-0 z-50")}
@@ -47,30 +47,30 @@ export default function CallCenterPage() {
         </div>
 
         {/* WebView iframe */}
-        <div className="h-full rounded-2xl overflow-hidden border border-border/50 shadow-2xl m-4">
-         <iframe
-  src="https://ui.aceternity.com/components/text-generate-effect"
-  className="w-full h-full"
-  title="Instagram"
-  sandbox="
-    allow-same-origin
-    allow-scripts
-    allow-popups
-    allow-forms
-    allow-modals
-    allow-downloads
-    allow-presentation
-    allow-top-navigation
-    allow-popups-to-escape-sandbox
-  "
-/>
+        <div className="h-full rounded-2xl overflow-hidden border border-border/50  m-4">
+          <iframe
+            src="https://nbcconnect.nbc.co.tz"
+            className="w-full h-full"
+            title="Instagram"
+            sandbox="
+              allow-same-origin
+              allow-scripts
+              allow-popups
+              allow-forms
+              allow-modals
+              allow-downloads
+              allow-presentation
+              allow-top-navigation
+              allow-popups-to-escape-sandbox
+            "
+          />
 
         </div>
       </div>
 
       {/* Call Panel */}
       {showPanel && !isFullscreen && (
-        <div className="transition-all duration-300 ease-in-out" style={{ width: `${panelWidth}%` }}>
+        <div className="transition-all duration-300 ease-in-out h-full" style={{ width: `${panelWidth}%` }}>
           <CallPanel onClose={() => setShowPanel(false)} />
         </div>
       )}

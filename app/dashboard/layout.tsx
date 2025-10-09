@@ -24,12 +24,12 @@ export default function DashboardLayout({
   }, [router])
 
   return (
-    <SidebarProvider defaultOpen={true}>
+    <SidebarProvider defaultOpen={false}>
       <div className="flex min-h-screen w-full">
         <AppSidebar />
         <div className="flex-1 flex flex-col">
           <AppHeader sticky />
-          <main className="flex-1 p-4 lg:p-6 bg-gradient-to-br from-background via-background to-muted/20">
+          <main className="flex-1 bg-gradient-to-br from-background via-background to-muted/20">
             {children}
           </main>
         </div>

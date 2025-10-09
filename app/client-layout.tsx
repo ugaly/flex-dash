@@ -14,7 +14,7 @@ export function ClientLayout({
 }>) {
   return (
     <>
-      <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange={false}>
+      <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange={false}>
         <CallProvider>
           {children}
           <FloatingCallWidget />
