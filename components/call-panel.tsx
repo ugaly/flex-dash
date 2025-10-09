@@ -377,6 +377,198 @@
 //   )
 // }
 
+
+
+
+// "use client"
+
+// import { useCall } from "@/lib/call-context"
+// import { Phone, Video, X, User, Clock } from "lucide-react"
+// import { useState } from "react"
+// import { Button } from "@/components/ui/button"
+// import { Input } from "@/components/ui/input"
+// import { cn } from "@/lib/utils"
+
+// export function CallPanel({ onClose }: { onClose?: () => void }) {
+//   const { callState, queueCalls, startCall, setCallState } = useCall()
+//   const [phoneNumber, setPhoneNumber] = useState("")
+//   const [view, setView] = useState<"queue" | "dialer">("queue")
+
+//   const handleDialPad = (digit: string) => {
+//     setPhoneNumber((prev) => prev + digit)
+//   }
+
+//   const handleBackspace = () => {
+//     setPhoneNumber((prev) => prev.slice(0, -1))
+//   }
+
+//   const handleCall = () => {
+//     if (phoneNumber) {
+//       startCall({
+//         id: Date.now().toString(),
+//         name: "Unknown",
+//         number: phoneNumber,
+//         status: "dialing",
+//       })
+//       setPhoneNumber("")
+//     }
+//   }
+
+//   const handleQueueCall = (call: (typeof queueCalls)[0]) => {
+//     startCall(call)
+//   }
+
+//   return (
+//     <div className="h-full flex flex-col bg-white border-l border-gray-300">
+//       {/* Header - Sticky */}
+//       <div className="flex-shrink-0 border-b border-gray-300 bg-white">
+//         <div className="p-3">
+//           <div className="flex items-center justify-between mb-2">
+//             <div>
+//               <h2 className="text-sm font-semibold text-gray-900">Call Manager</h2>
+//               <p className="text-xs text-gray-600">Flex Administrator</p>
+//             </div>
+//             {onClose && (
+//               <Button variant="ghost" size="sm" onClick={onClose} className="h-6 w-6 p-0">
+//                 <X className="h-3 w-3" />
+//               </Button>
+//             )}
+//           </div>
+
+//           {/* View toggle */}
+//           <div className="flex gap-1">
+//             <Button
+//               variant={view === "queue" ? "default" : "outline"}
+//               size="sm"
+//               onClick={() => setView("queue")}
+//               className="flex-1 text-xs h-7"
+//             >
+//               <Clock className="h-3 w-3 mr-1" />
+//               Queue ({queueCalls.length})
+//             </Button>
+//             <Button
+//               variant={view === "dialer" ? "default" : "outline"}
+//               size="sm"
+//               onClick={() => setView("dialer")}
+//               className="flex-1 text-xs h-7"
+//             >
+//               <Phone className="h-3 w-3 mr-1" />
+//               Dialer
+//             </Button>
+//           </div>
+//         </div>
+//       </div>
+
+//       {/* Content - Scrollable */}
+//       <div className="flex-1 overflow-y-auto">
+//         {view === "queue" ? (
+//           <div className="p-2 space-y-1">
+//             {queueCalls.map((call) => (
+//               <div
+//                 key={call.id}
+//                 className="p-2 bg-gray-50 border border-gray-300 rounded hover:bg-gray-100 transition-colors cursor-pointer"
+//                 onClick={() => handleQueueCall(call)}
+//               >
+//                 <div className="flex items-center gap-2">
+//                   <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+//                     <User className="h-3 w-3 text-blue-600" />
+//                   </div>
+//                   <div className="flex-1 min-w-0">
+//                     <h3 className="text-md font-medium text-gray-900 truncate">{call.name}</h3>
+//                     <p className="text-md text-gray-600 truncate">{call.number}</p>
+//                   </div>
+//                   <Button
+//                     size="sm"
+//                     className="h-6 w-6 p-0 bg-green-600 hover:bg-green-700 flex-shrink-0"
+//                   >
+//                     <Phone className="h-3 w-3" />
+//                   </Button>
+//                 </div>
+//               </div>
+//             ))}
+//           </div>
+//         ) : (
+//           <div className="p-3 space-y-3">
+//             {/* Phone number display */}
+//             <div className="relative">
+//               <Input
+//                 value={phoneNumber}
+//                 onChange={(e) => setPhoneNumber(e.target.value)}
+//                 placeholder="Enter number"
+//                 className="text-center text-sm h-10 border border-gray-300 rounded font-medium"
+//               />
+//               {phoneNumber && (
+//                 <Button
+//                   variant="ghost"
+//                   size="sm"
+//                   onClick={handleBackspace}
+//                   className="absolute right-1 top-1/2 -translate-y-1/2 h-6 w-6 p-0"
+//                 >
+//                   ⌫
+//                 </Button>
+//               )}
+//             </div>
+
+//             {/* Dial pad */}
+//             <div className="grid grid-cols-3 gap-2">
+//               {[
+//                 { digit: "1", letters: "" },
+//                 { digit: "2", letters: "ABC" },
+//                 { digit: "3", letters: "DEF" },
+//                 { digit: "4", letters: "GHI" },
+//                 { digit: "5", letters: "JKL" },
+//                 { digit: "6", letters: "MNO" },
+//                 { digit: "7", letters: "PQRS" },
+//                 { digit: "8", letters: "TUV" },
+//                 { digit: "9", letters: "WXYZ" },
+//                 { digit: "*", letters: "" },
+//                 { digit: "0", letters: "+" },
+//                 { digit: "#", letters: "" },
+//               ].map((item) => (
+//                 <Button
+//                   key={item.digit}
+//                   variant="outline"
+//                   onClick={() => handleDialPad(item.digit)}
+//                   className="h-12 border border-gray-300 rounded flex flex-col items-center justify-center hover:bg-gray-50"
+//                 >
+//                   <span className="text-base font-semibold text-gray-900">
+//                     {item.digit}
+//                   </span>
+//                   {item.letters && (
+//                     <span className="text-[10px] text-gray-500 mt-0.5">{item.letters}</span>
+//                   )}
+//                 </Button>
+//               ))}
+//             </div>
+
+//             {/* Call buttons */}
+//             <div className="flex gap-2">
+//               <Button
+//                 onClick={handleCall}
+//                 disabled={!phoneNumber}
+//                 className="flex-1 h-10 bg-green-600 hover:bg-green-700 text-white font-medium text-sm"
+//               >
+//                 <Phone className="h-4 w-4 mr-1" />
+//                 Call
+//               </Button>
+//               <Button
+//                 variant="outline"
+//                 className="flex-1 h-10 border border-gray-300 hover:bg-gray-50 text-sm"
+//               >
+//                 <Video className="h-4 w-4 mr-1" />
+//                 Video
+//               </Button>
+//             </div>
+//           </div>
+//         )}
+//       </div>
+//     </div>
+//   )
+// }
+
+
+
+
 "use client"
 
 import { useCall } from "@/lib/call-context"
@@ -387,67 +579,75 @@ import { Input } from "@/components/ui/input"
 import { cn } from "@/lib/utils"
 
 export function CallPanel({ onClose }: { onClose?: () => void }) {
-  const { callState, queueCalls, startCall, setCallState } = useCall()
+  const { queueCalls, startCall } = useCall()
   const [phoneNumber, setPhoneNumber] = useState("")
   const [view, setView] = useState<"queue" | "dialer">("queue")
 
-  const handleDialPad = (digit: string) => {
-    setPhoneNumber((prev) => prev + digit)
-  }
-
-  const handleBackspace = () => {
-    setPhoneNumber((prev) => prev.slice(0, -1))
-  }
+  const handleDialPad = (digit: string) => setPhoneNumber((prev) => prev + digit)
+  const handleBackspace = () => setPhoneNumber((prev) => prev.slice(0, -1))
 
   const handleCall = () => {
-    if (phoneNumber) {
-      startCall({
-        id: Date.now().toString(),
-        name: "Unknown",
-        number: phoneNumber,
-        status: "dialing",
-      })
-      setPhoneNumber("")
-    }
+    if (!phoneNumber) return
+    startCall({
+      id: Date.now().toString(),
+      name: "Unknown",
+      number: phoneNumber,
+      status: "dialing",
+    })
+    setPhoneNumber("")
   }
 
-  const handleQueueCall = (call: (typeof queueCalls)[0]) => {
-    startCall(call)
-  }
+  const handleQueueCall = (call: (typeof queueCalls)[0]) => startCall(call)
 
   return (
-    <div className="h-full flex flex-col bg-white border-l border-gray-300">
-      {/* Header - Sticky */}
-      <div className="flex-shrink-0 border-b border-gray-300 bg-white">
-        <div className="p-3">
-          <div className="flex items-center justify-between mb-2">
+    <div className="h-full flex flex-col bg-white border-l border-gray-200  shadow-lg overflow-hidden">
+      {/* 🌊 Header Section */}
+      <div className="flex-shrink-0 bg-gradient-to-r from-blue-500 to-blue-400 text-white shadow-md">
+        <div className="p-4 pb-3">
+          <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-sm font-semibold text-gray-900">Call Manager</h2>
-              <p className="text-xs text-gray-600">Flex Administrator</p>
+              <h2 className="text-base font-semibold">Call Manager</h2>
+              <p className="text-xs text-blue-100">Flex Administrator</p>
             </div>
             {onClose && (
-              <Button variant="ghost" size="sm" onClick={onClose} className="h-6 w-6 p-0">
-                <X className="h-3 w-3" />
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={onClose}
+                className="h-7 w-7 p-0 hover:bg-blue-700/30 text-white"
+              >
+                <X className="h-4 w-4" />
               </Button>
             )}
           </div>
 
-          {/* View toggle */}
-          <div className="flex gap-1">
+          {/* View Toggle Buttons */}
+          <div className="mt-3 flex gap-2">
             <Button
-              variant={view === "queue" ? "default" : "outline"}
+              variant={view === "queue" ? "secondary" : "outline"}
               size="sm"
               onClick={() => setView("queue")}
-              className="flex-1 text-xs h-7"
+              className={cn(
+                "flex-1 text-xs h-8 border border-blue-400/40",
+                view === "queue"
+                  ? "bg-white text-blue-700 font-medium"
+                  : "bg-transparent text-white hover:bg-blue-600/40"
+              )}
             >
               <Clock className="h-3 w-3 mr-1" />
               Queue ({queueCalls.length})
             </Button>
+
             <Button
-              variant={view === "dialer" ? "default" : "outline"}
+              variant={view === "dialer" ? "secondary" : "outline"}
               size="sm"
               onClick={() => setView("dialer")}
-              className="flex-1 text-xs h-7"
+              className={cn(
+                "flex-1 text-xs h-8 border border-blue-400/40",
+                view === "dialer"
+                  ? "bg-white text-blue-700 font-medium"
+                  : "bg-transparent text-white hover:bg-blue-200/40"
+              )}
             >
               <Phone className="h-3 w-3 mr-1" />
               Dialer
@@ -456,58 +656,61 @@ export function CallPanel({ onClose }: { onClose?: () => void }) {
         </div>
       </div>
 
-      {/* Content - Scrollable */}
-      <div className="flex-1 overflow-y-auto">
+      {/* 🧩 Content Section */}
+      <div className="flex-1 overflow-y-auto p-4">
         {view === "queue" ? (
-          <div className="p-2 space-y-1">
+          <div className="space-y-2">
+            {queueCalls.length === 0 && (
+              <p className="text-center text-sm text-gray-400 py-6">No calls in queue</p>
+            )}
             {queueCalls.map((call) => (
               <div
                 key={call.id}
-                className="p-2 bg-gray-50 border border-gray-300 rounded hover:bg-gray-100 transition-colors cursor-pointer"
+                className="flex items-center justify-between p-3 border border-gray-200 rounded-lg bg-gray-50 hover:bg-gray-100 transition cursor-pointer"
                 onClick={() => handleQueueCall(call)}
               >
-                <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
-                    <User className="h-3 w-3 text-blue-600" />
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+                    <User className="h-4 w-4 text-blue-600" />
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="text-md font-medium text-gray-900 truncate">{call.name}</h3>
-                    <p className="text-md text-gray-600 truncate">{call.number}</p>
+                  <div>
+                    <h3 className="text-sm font-semibold text-gray-900">{call.name}</h3>
+                    <p className="text-xs text-gray-600">{call.number}</p>
                   </div>
-                  <Button
-                    size="sm"
-                    className="h-6 w-6 p-0 bg-green-600 hover:bg-green-700 flex-shrink-0"
-                  >
-                    <Phone className="h-3 w-3" />
-                  </Button>
                 </div>
+                <Button
+                  size="icon"
+                  className="bg-green-600 hover:bg-green-700 h-7 w-7 rounded-full"
+                >
+                  <Phone className="h-4 w-4 text-white" />
+                </Button>
               </div>
             ))}
           </div>
         ) : (
-          <div className="p-3 space-y-3">
-            {/* Phone number display */}
+          <div className="space-y-4">
+            {/* Input */}
             <div className="relative">
               <Input
                 value={phoneNumber}
                 onChange={(e) => setPhoneNumber(e.target.value)}
                 placeholder="Enter number"
-                className="text-center text-sm h-10 border border-gray-300 rounded font-medium"
+                className="text-center text-base font-medium h-11 border-gray-300"
               />
               {phoneNumber && (
                 <Button
                   variant="ghost"
                   size="sm"
                   onClick={handleBackspace}
-                  className="absolute right-1 top-1/2 -translate-y-1/2 h-6 w-6 p-0"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 h-7 w-7 p-0 text-gray-500 hover:text-gray-700"
                 >
                   ⌫
                 </Button>
               )}
             </div>
 
-            {/* Dial pad */}
-            <div className="grid grid-cols-3 gap-2">
+            {/* Dial Pad */}
+            <div className="grid grid-cols-3 gap-3">
               {[
                 { digit: "1", letters: "" },
                 { digit: "2", letters: "ABC" },
@@ -526,11 +729,9 @@ export function CallPanel({ onClose }: { onClose?: () => void }) {
                   key={item.digit}
                   variant="outline"
                   onClick={() => handleDialPad(item.digit)}
-                  className="h-12 border border-gray-300 rounded flex flex-col items-center justify-center hover:bg-gray-50"
+                  className="h-14 flex flex-col justify-center items-center border-gray-300 hover:bg-blue-50 text-gray-900"
                 >
-                  <span className="text-base font-semibold text-gray-900">
-                    {item.digit}
-                  </span>
+                  <span className="text-lg font-semibold">{item.digit}</span>
                   {item.letters && (
                     <span className="text-[10px] text-gray-500 mt-0.5">{item.letters}</span>
                   )}
@@ -538,21 +739,26 @@ export function CallPanel({ onClose }: { onClose?: () => void }) {
               ))}
             </div>
 
-            {/* Call buttons */}
-            <div className="flex gap-2">
+            {/* Call Buttons */}
+            <div className="flex gap-2 pt-2">
               <Button
                 onClick={handleCall}
                 disabled={!phoneNumber}
-                className="flex-1 h-10 bg-green-600 hover:bg-green-700 text-white font-medium text-sm"
+                className={cn(
+                  "flex-1 h-11 text-white font-semibold text-sm shadow-sm transition-all",
+                  !phoneNumber
+                    ? "bg-gray-300 cursor-not-allowed"
+                    : "bg-green-600 hover:bg-green-700"
+                )}
               >
-                <Phone className="h-4 w-4 mr-1" />
+                <Phone className="h-4 w-4 mr-2" />
                 Call
               </Button>
               <Button
                 variant="outline"
-                className="flex-1 h-10 border border-gray-300 hover:bg-gray-50 text-sm"
+                className="flex-1 h-11 text-gray-700 font-semibold text-sm border-gray-300 hover:bg-gray-100"
               >
-                <Video className="h-4 w-4 mr-1" />
+                <Video className="h-4 w-4 mr-2" />
                 Video
               </Button>
             </div>

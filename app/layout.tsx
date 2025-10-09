@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Inter, JetBrains_Mono } from "next/font/google"
 import "./globals.css"
 import { ClientLayout } from "./client-layout"
+import { CallManagerProvider } from "@/contexts/call-manager-context"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -49,7 +50,11 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <ClientLayout>{children}</ClientLayout>
+        <ClientLayout>
+          <CallManagerProvider>
+            {children}
+          </CallManagerProvider>
+        </ClientLayout>
       </body>
     </html>
   )
