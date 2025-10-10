@@ -104,25 +104,25 @@ export function AppHeader({ sticky = true }: AppHeaderProps) {
           <SidebarTrigger className="h-9 w-9" />
 
           {role === "agent" && (
-          <div className="hidden md:block">
-            <div className="relative w-56">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-              <Input
-                placeholder="Search anything..."
-                className="pl-10 h-10 bg-muted/50 border-border/50 focus-visible:ring-primary"
-                onClick={() => setSearchOpen(true)}
-                readOnly
-              />
+            <div className="hidden md:block">
+              <div className="relative w-56">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <Input
+                  placeholder="Search anything..."
+                  className="pl-10 h-10 bg-muted/50 border-border/50 focus-visible:ring-primary"
+                  onClick={() => setSearchOpen(true)}
+                  readOnly
+                />
+              </div>
             </div>
-          </div>
           )}
         </div>
 
-          {role === "agent" && (
-        <div className="absolute left-1/2 transform -translate-x-1/2">
-          <StatusDropdown />
-        </div>
-          )}
+        {role === "agent" && (
+          <div className="absolute left-1/2 transform -translate-x-1/2">
+            <StatusDropdown />
+          </div>
+        )}
 
 
         <div className="flex items-center gap-2">

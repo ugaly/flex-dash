@@ -20,7 +20,7 @@ export function getMenuItems(role: UserRole): MenuItem[] {
 
   const adminItems: MenuItem[] = [
     { title: "Home", icon: Home, href: "/dashboard/admin" },
-    { title: "Analytics", icon: BarChart3, href: "/dashboard/analytics" },
+    { title: "Flex Chart", icon: BarChart3, href: "/dashboard/flex-chart" },
     { title: "User Management", icon: Shield, href: "/dashboard/users" },
     { title: "Database", icon: Database, href: "/dashboard/database" },
     // ...sharedItems,
