@@ -1,6 +1,6 @@
 "use client"
 
-import * as React from "react"
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation"
 import {
   Search,
@@ -37,6 +37,15 @@ interface AppHeaderProps {
   sticky?: boolean
 }
 
+
+
+interface User {
+  username: string;
+  role: string;
+  name: string;
+}
+
+
 const searchCategories = [
   { name: "Dashboard", icon: TrendingUp },
   { name: "Customers", icon: Users },
@@ -53,6 +62,7 @@ export function AppHeader({ sticky = true }: AppHeaderProps) {
   const [searchOpen, setSearchOpen] = React.useState(false)
   const [searchQuery, setSearchQuery] = React.useState("")
   const [selectedCategory, setSelectedCategory] = React.useState("Dashboard")
+  const [role, setRole] = useState<string>("");
 
   React.useEffect(() => {
     const currentUser = getUserFromStorage()
@@ -63,6 +73,23 @@ export function AppHeader({ sticky = true }: AppHeaderProps) {
     clearUserFromStorage()
     router.push("/login")
   }
+
+
+
+
+  useEffect(() => {
+    const userJson = localStorage.getItem("frlex_user");
+
+    if (userJson) {
+      try {
+        const user: User = JSON.parse(userJson);
+        setRole(user.role ?? "");
+      } catch (error) {
+        console.error("Failed to parse frlex_user:", error);
+      }
+    }
+  }, []);
+
 
   return (
     <>
@@ -76,6 +103,7 @@ export function AppHeader({ sticky = true }: AppHeaderProps) {
         <div className="flex items-center gap-3 flex-shrink-0">
           <SidebarTrigger className="h-9 w-9" />
 
+          {role === "agent" && (
           <div className="hidden md:block">
             <div className="relative w-56">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
@@ -87,11 +115,14 @@ export function AppHeader({ sticky = true }: AppHeaderProps) {
               />
             </div>
           </div>
+          )}
         </div>
 
+          {role === "agent" && (
         <div className="absolute left-1/2 transform -translate-x-1/2">
           <StatusDropdown />
         </div>
+          )}
 
 
         <div className="flex items-center gap-2">

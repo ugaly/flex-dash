@@ -455,19 +455,18 @@ export default function AdminDashboardPage() {
           className="w-full h-full"
           title="Call Center"
           sandbox="
-                        allow-same-origin
-                        allow-scripts
-                        allow-popups
-                        allow-forms
-                        allow-modals
-                        allow-downloads
-                        allow-presentation
-                        allow-top-navigation
-                        allow-popups-to-escape-sandbox
-                        "
+          allow-same-origin
+          allow-scripts
+          allow-popups
+          allow-forms
+          allow-modals
+          allow-downloads
+          allow-presentation
+          allow-top-navigation
+          allow-popups-to-escape-sandbox
+          "
         />
       </div>
-
 
 
 
