@@ -285,8 +285,10 @@ export default function AdminDashboardPage() {
   ]
 
   return (
-    <div className="space-y-6 p-4">
-      {/* Header Section */}
+    // <div className="space-y-6 p-4">
+    <div className="h-full m-0 p-0">
+
+      {/* Header Section
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Administrator Dashboard</h1>
@@ -298,7 +300,6 @@ export default function AdminDashboardPage() {
         </Button>
       </div>
 
-      {/* System Stats Grid */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {systemStats.map((stat, index) => {
           const Icon = stat.icon
@@ -319,9 +320,7 @@ export default function AdminDashboardPage() {
         })}
       </div>
 
-      {/* Main Content Grid */}
       <div className="grid gap-4 lg:grid-cols-3">
-        {/* System Health */}
         <Card className="lg:col-span-2 border border-gray-300">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -359,7 +358,6 @@ export default function AdminDashboardPage() {
           </CardContent>
         </Card>
 
-        {/* Quick Stats */}
         <Card className="border border-gray-300">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -393,9 +391,7 @@ export default function AdminDashboardPage() {
         </Card>
       </div>
 
-      {/* Bottom Grid */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {/* Recent Activities */}
         <Card className="lg:col-span-2 border border-gray-300">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -423,7 +419,6 @@ export default function AdminDashboardPage() {
           </CardContent>
         </Card>
 
-        {/* System Alerts */}
         <Card className="border border-gray-300">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -449,7 +444,33 @@ export default function AdminDashboardPage() {
             </div>
           </CardContent>
         </Card>
+      </div> */}
+
+
+
+
+      <div className="h-full  overflow-hidden border border-border/50 ">
+        <iframe
+          src="https://cc.flex.co.tz/admindash"
+          className="w-full h-full"
+          title="Call Center"
+          sandbox="
+                        allow-same-origin
+                        allow-scripts
+                        allow-popups
+                        allow-forms
+                        allow-modals
+                        allow-downloads
+                        allow-presentation
+                        allow-top-navigation
+                        allow-popups-to-escape-sandbox
+                        "
+        />
       </div>
+
+
+
+
     </div>
   )
 }
