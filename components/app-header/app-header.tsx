@@ -72,26 +72,32 @@ export function AppHeader({ sticky = true }: AppHeaderProps) {
           sticky && "sticky top-0 z-40",
         )}
       >
-        <SidebarTrigger className="h-9 w-9" />
-        <StatusDropdown />
 
-        <div className="flex-1 max-w-md mx-auto hidden md:block">
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-            <Input
-              placeholder="Search anything..."
-              className="pl-10 h-10 bg-muted/50 border-border/50 focus-visible:ring-primary"
-              onClick={() => setSearchOpen(true)}
-              readOnly
-            />
+        <div className="flex items-center gap-3 flex-shrink-0">
+          <SidebarTrigger className="h-9 w-9" />
+
+          <div className="hidden md:block">
+            <div className="relative w-56">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Input
+                placeholder="Search anything..."
+                className="pl-10 h-10 bg-muted/50 border-border/50 focus-visible:ring-primary"
+                onClick={() => setSearchOpen(true)}
+                readOnly
+              />
+            </div>
           </div>
         </div>
+
+        <div className="absolute left-1/2 transform -translate-x-1/2">
+          <StatusDropdown />
+        </div>
+
 
         <div className="flex items-center gap-2">
           <Button variant="ghost" size="icon" className="md:hidden h-9 w-9" onClick={() => setSearchOpen(true)}>
             <Search className="h-4 w-4" />
           </Button>
-          {/* <ModeToggle /> */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="h-10 gap-2 px-3">
@@ -217,9 +223,7 @@ export function AppHeader({ sticky = true }: AppHeaderProps) {
             </p>
           </DialogHeader>
 
-          {/* BODY */}
           <div className="flex flex-1 h-[calc(85vh-120px)] min-h-0">
-            {/* LEFT SIDEBAR */}
             <div className="w-64 border-r border-gray-200 bg-gray-50 p-4 overflow-y-auto flex-shrink-0">
               <h3 className="text-sm font-semibold mb-3 text-gray-700 uppercase tracking-wide">
                 Categories
