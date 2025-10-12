@@ -25,7 +25,7 @@ export function getMenuItems(role: UserRole): MenuItem[] {
     { title: "Call detail", icon: Book, href: "/dashboard/call-detail" },
 
 
-    { title: "User Management", icon: Shield, href: "/dashboard/users" },
+    { title: "User Management", icon: Users, href: "/dashboard/users" },
     { title: "Database", icon: Database, href: "/dashboard/database" },
     // ...sharedItems,
   ]
