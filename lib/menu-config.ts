@@ -1,4 +1,4 @@
-import { LayoutDashboard, Phone, Users, Settings, FileText, BarChart3, Shield, Database, PhoneMissed, MessageCircle, Home, ChartSpline, Book } from "lucide-react"
+import { LayoutDashboard, Phone, Users, Settings, FileText, BarChart3, Shield, Database, PhoneMissed, MessageCircle, Home, ChartSpline, Book, Megaphone } from "lucide-react"
 import type { UserRole } from "./auth"
 
 export interface MenuItem {
@@ -26,7 +26,7 @@ export function getMenuItems(role: UserRole): MenuItem[] {
 
 
     { title: "User Management", icon: Users, href: "/dashboard/users" },
-    { title: "Database", icon: Database, href: "/dashboard/database" },
+    { title: "Campaign", icon: Megaphone, href: "/dashboard/campaigns" },
     // ...sharedItems,
   ]
 
