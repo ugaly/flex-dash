@@ -1,30 +1,267 @@
+// "use client"
+
+// import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+// import { SettingsIcon } from "lucide-react"
+
+// export default function SettingsPage() {
+//   return (
+//     <div className="space-y-6 p-4">
+//       <div>
+//         <h1 className="text-3xl font-bold tracking-tight">Settings</h1>
+//         <p className="text-muted-foreground mt-2">Manage your account and application preferences</p>
+//       </div>
+
+//       <Card className="backdrop-blur-sm bg-card/50 border-border/50">
+//         <CardHeader>
+//           <CardTitle className="flex items-center gap-2">
+//             <SettingsIcon className="h-5 w-5" />
+//             General Settings
+//           </CardTitle>
+//           <CardDescription>Configure your system preferences</CardDescription>
+//         </CardHeader>
+//         <CardContent>
+//           <div className="text-sm text-muted-foreground text-center py-8">
+//             Settings configuration will be displayed here
+//           </div>
+//         </CardContent>
+//       </Card>
+//     </div>
+//   )
+// }
+
+
+
+
+
 "use client"
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { SettingsIcon } from "lucide-react"
+import type React from "react"
+
+import { useState } from "react"
+import { useRouter } from "next/navigation"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Card, CardContent } from "@/components/ui/card"
+import {
+  Volume2,
+  List,
+  SettingsIcon,
+  Mic,
+  Clock,
+  Calendar,
+  ArrowDownCircle,
+  ArrowUpCircle,
+  Building,
+  Languages,
+  Phone,
+  Lock,
+  Music,
+  FileText,
+  Bell,
+  Wrench,
+  Menu,
+  Search,
+  AlertTriangle,
+  Bot,
+  MapPin,
+  Asterisk,
+} from "lucide-react"
+
+interface SettingCard {
+  title: string
+  description: string
+  icon: React.ReactNode
+  route: string
+}
 
 export default function SettingsPage() {
-  return (
-    <div className="space-y-6 p-4">
-      <div>
-        <h1 className="text-3xl font-bold tracking-tight">Settings</h1>
-        <p className="text-muted-foreground mt-2">Manage your account and application preferences</p>
-      </div>
+  const router = useRouter()
+  const [searchQuery, setSearchQuery] = useState("")
 
-      <Card className="backdrop-blur-sm bg-card/50 border-border/50">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <SettingsIcon className="h-5 w-5" />
-            General Settings
-          </CardTitle>
-          <CardDescription>Configure your system preferences</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="text-sm text-muted-foreground text-center py-8">
-            Settings configuration will be displayed here
-          </div>
-        </CardContent>
-      </Card>
+  const settingsCards: SettingCard[] = [
+    {
+      title: "IVR",
+      description: "Configure Interactive Voice Response systems for call routing",
+      icon: <Volume2 className="h-8 w-8" />,
+      route: "/dashboard/settings/ivr",
+    },
+    {
+      title: "Queue",
+      description: "Manage call queues and queue settings for inbound calls",
+      icon: <List className="h-8 w-8" />,
+      route: "/settings/queue",
+    },
+    {
+      title: "Configurations",
+      description: "System-wide configuration settings and parameters",
+      icon: <SettingsIcon className="h-8 w-8" />,
+      route: "/settings/configurations",
+    },
+    {
+      title: "Recordings",
+      description: "Manage voice recordings for greetings, prompts and messages",
+      icon: <Mic className="h-8 w-8" />,
+      route: "/settings/recordings",
+    },
+    {
+      title: "Time Group",
+      description: "Define groups of time periods for scheduling purposes",
+      icon: <Clock className="h-8 w-8" />,
+      route: "/settings/time-group",
+    },
+    {
+      title: "Time Condition",
+      description: "Set conditional call routing based on date and time",
+      icon: <Calendar className="h-8 w-8" />,
+      route: "/settings/time-condition",
+    },
+    {
+      title: "Inbound Routes",
+      description: "Configure routing for incoming calls by DID or CallerID",
+      icon: <ArrowDownCircle className="h-8 w-8" />,
+      route: "/settings/inbound-routes",
+    },
+    {
+      title: "Outbound Routes",
+      description: "Manage outgoing call paths and dial patterns",
+      icon: <ArrowUpCircle className="h-8 w-8" />,
+      route: "/settings/outbound-routes",
+    },
+    {
+      title: "Departments",
+      description: "Organize extensions and users into departmental groups",
+      icon: <Building className="h-8 w-8" />,
+      route: "/settings/departments",
+    },
+    {
+      title: "CDR Configuration",
+      description: "Configure Call Detail Records logging and reporting options",
+      icon: <Languages className="h-8 w-8" />,
+      route: "/settings/cdr-configuration",
+    },
+    {
+      title: "Trunks",
+      description: "Manage telephony connections to service providers",
+      icon: <Phone className="h-8 w-8" />,
+      route: "/settings/trunks",
+    },
+    {
+      title: "Extensions",
+      description: "Configure user telephone extensions and settings",
+      icon: <Phone className="h-8 w-8" />,
+      route: "/settings/extensions",
+    },
+    {
+      title: "Security",
+      description: "Manage security settings, permissions and access controls",
+      icon: <Lock className="h-8 w-8" />,
+      route: "/settings/security",
+    },
+    {
+      title: "Music On Hold",
+      description: "Upload and manage audio played during call holds",
+      icon: <Music className="h-8 w-8" />,
+      route: "/settings/music-on-hold",
+    },
+    {
+      title: "Certificates",
+      description: "Manage SSL/TLS certificates for secure communications",
+      icon: <FileText className="h-8 w-8" />,
+      route: "/settings/certificates",
+    },
+    {
+      title: "Tones",
+      description: "Configure system tones, rings and audible indicators",
+      icon: <Bell className="h-8 w-8" />,
+      route: "/settings/tones",
+    },
+    {
+      title: "User Panel",
+      description: "Customize user interface panels and dashboards",
+      icon: <Wrench className="h-8 w-8" />,
+      route: "/settings/user-panel",
+    },
+    {
+      title: "Dial Plan",
+      description: "Design call flow and routing logic for the phone system",
+      icon: <Menu className="h-8 w-8" />,
+      route: "/settings/dial-plan",
+    },
+    {
+      title: "Audit Trails",
+      description: "Review system activity logs and security events",
+      icon: <AlertTriangle className="h-8 w-8" />,
+      route: "/settings/audit-trails",
+    },
+    {
+      title: "Virtual Assistant",
+      description: "Configure AI-powered virtual assistants for automated responses",
+      icon: <Bot className="h-8 w-8" />,
+      route: "/settings/virtual-assistant",
+    },
+    {
+      title: "Location Check",
+      description: "Verify and manage geographical settings and locations",
+      icon: <MapPin className="h-8 w-8" />,
+      route: "/settings/location-check",
+    },
+    {
+      title: "SIP Trunks",
+      description: "Manage and configure SIP trunks for external communication",
+      icon: <Asterisk className="h-8 w-8" />,
+      route: "/settings/sip-trunks",
+    },
+  ]
+
+  const filteredCards = settingsCards.filter(
+    (card) =>
+      card.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      card.description.toLowerCase().includes(searchQuery.toLowerCase()),
+  )
+
+  const handleCardClick = (route: string) => {
+    router.push(route)
+  }
+
+  return (
+    <div className="min-h-screen bg-background p-6">
+      <div className="mx-auto max-w-7xl">
+        <header className="mb-8">
+          <h1 className="text-3xl font-bold text-foreground">Admin Panel</h1>
+        </header>
+
+        <div className="mb-8 flex gap-2">
+          <Input
+            type="text"
+            placeholder="Search for functions or settings..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="flex-1"
+          />
+          <Button>
+            <Search className="mr-2 h-4 w-4" />
+            Search
+          </Button>
+        </div>
+
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {filteredCards.map((card) => (
+            <Card
+              key={card.title}
+              className="cursor-pointer transition-all hover:shadow-lg hover:scale-105"
+              onClick={() => handleCardClick(card.route)}
+            >
+              <CardContent className="flex flex-col items-center p-6 text-center">
+                <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 text-blue-600">
+                  {card.icon}
+                </div>
+                <h3 className="mb-2 text-lg font-semibold text-foreground">{card.title}</h3>
+                <p className="text-sm text-muted-foreground">{card.description}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
     </div>
   )
 }
