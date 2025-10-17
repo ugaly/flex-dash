@@ -190,12 +190,12 @@ export default function SettingsPage() {
 
   return (
     <div className="min-h-screen bg-background p-6">
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto ">
         <header className="mb-8">
           <h1 className="text-3xl font-bold text-foreground">Admin Panel</h1>
         </header>
 
-        <div className="mb-8 flex gap-2">
+        {/* <div className="mb-8 flex gap-2">
           <Input
             type="text"
             placeholder="Search for functions or settings..."
@@ -207,6 +207,22 @@ export default function SettingsPage() {
             <Search className="mr-2 h-4 w-4" />
             Search
           </Button>
+        </div> */}
+
+
+
+        <div className="imported-search-bar">
+          <input
+            type="text"
+            placeholder="Search for functions or settings..."
+            aria-label="Search"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="imported-search-input"
+          />
+          <button type="button" className="imported-search-button">
+            <i className="fas fa-search"></i> Search
+          </button>
         </div>
 
 
