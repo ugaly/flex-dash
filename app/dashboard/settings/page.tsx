@@ -1,38 +1,3 @@
-// "use client"
-
-// import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-// import { SettingsIcon } from "lucide-react"
-
-// export default function SettingsPage() {
-//   return (
-//     <div className="space-y-6 p-4">
-//       <div>
-//         <h1 className="text-3xl font-bold tracking-tight">Settings</h1>
-//         <p className="text-muted-foreground mt-2">Manage your account and application preferences</p>
-//       </div>
-
-//       <Card className="backdrop-blur-sm bg-card/50 border-border/50">
-//         <CardHeader>
-//           <CardTitle className="flex items-center gap-2">
-//             <SettingsIcon className="h-5 w-5" />
-//             General Settings
-//           </CardTitle>
-//           <CardDescription>Configure your system preferences</CardDescription>
-//         </CardHeader>
-//         <CardContent>
-//           <div className="text-sm text-muted-foreground text-center py-8">
-//             Settings configuration will be displayed here
-//           </div>
-//         </CardContent>
-//       </Card>
-//     </div>
-//   )
-// }
-
-
-
-
-
 "use client"
 
 import type React from "react"
@@ -244,23 +209,25 @@ export default function SettingsPage() {
           </Button>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+
+
+        <div className="imported-nav-grid">
           {filteredCards.map((card) => (
-            <Card
+            <div
               key={card.title}
-              className="cursor-pointer transition-all hover:shadow-lg hover:scale-105"
+              className="imported-nav-item"
               onClick={() => handleCardClick(card.route)}
             >
-              <CardContent className="flex flex-col items-center p-6 text-center">
-                <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 text-blue-600">
-                  {card.icon}
-                </div>
-                <h3 className="mb-2 text-lg font-semibold text-foreground">{card.title}</h3>
-                <p className="text-sm text-muted-foreground">{card.description}</p>
-              </CardContent>
-            </Card>
+
+              <div className="imported-nav-icon">
+                {card.icon}
+              </div>
+              <div className="imported-nav-title">{card.title}</div>
+              <p>{card.description}</p>
+            </div>
           ))}
         </div>
+
       </div>
     </div>
   )
