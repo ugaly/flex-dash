@@ -33,7 +33,6 @@ export function AppSidebar() {
 
   return (
     <Sidebar collapsible="icon" className="border-r border-gray-300 bg-white">
-      {/* Header */}
       {state === "collapsed" ? (
         <SidebarHeader className="h-16 border-b border-sidebar-border/50 flex items-center justify-center">
           <div className={cn(
@@ -58,17 +57,14 @@ export function AppSidebar() {
 
       ) : (
         <SidebarHeader className="h-16 border-b border-sidebar-border/100 px-4 py-4 flex items-center justify-center">
-          {/* Centered Logo Container */}
           <div
             className={cn(
               "relative transition-all duration-500 group flex items-center justify-center",
               state as string === "collapsed" ? "w-14 h-14" : "w-30 h-12"
             )}
           >
-            {/* Animated Background Glow */}
             <div className="absolute inset-0 bg-gradient-to-br group-hover:blur-2xl transition-all duration-700 animate-pulse" />
 
-            {/* Main Logo */}
             <div className="w-full h-full bg-sidebar rounded-[18px] flex items-center justify-center backdrop-blur-sm">
               <Image
                 src="/logo.png"
@@ -83,7 +79,6 @@ export function AppSidebar() {
 
       )}
 
-      {/* Navigation */}
       <SidebarContent className="px-3 py-4">
         <SidebarMenu className="space-y-1">
           {menuItems.map((item) => {

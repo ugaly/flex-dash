@@ -6,7 +6,6 @@ export interface User {
   name: string
 }
 
-// Hardcoded users for authentication
 const users: User[] = [
   { username: "agent", role: "agent", name: "Agent User" },
   { username: "administrator", role: "administrator", name: "Administrator" },
@@ -14,7 +13,6 @@ const users: User[] = [
 
 export function authenticateUser(username: string, password: string): User | null {
   const user = users.find((u) => u.username === username)
-  // Simple authentication - in production, use proper password hashing
   if (user && password) {
     return user
   }

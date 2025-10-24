@@ -12,12 +12,10 @@ export function SharedCallManagerPanel() {
 
   return (
     <>
-      {/* Call Panel */}
       <div className="transition-all duration-300 ease-in-out h-full" style={{ width: `${panelWidth}%` }}>
         <CallPanel />
       </div>
 
-      {/* Resize handle */}
       <div
         className="absolute top-0 bottom-0 w-1 cursor-col-resize hover:bg-primary/50 transition-colors group z-10"
         style={{ right: `${panelWidth}%` }}

@@ -41,7 +41,6 @@ export function CallProvider({ children }: { children: React.ReactNode }) {
   const startCall = useCallback((call: Call) => {
     setCurrentCall(call)
     setCallState("dialing")
-    // Simulate call connecting after 2 seconds
     setTimeout(() => {
       setCallState("active")
     }, 5000)

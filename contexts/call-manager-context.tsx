@@ -30,7 +30,6 @@ export function CallManagerProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<CallManagerState>(defaultState)
   const [isHydrated, setIsHydrated] = useState(false)
 
-  // Load state from localStorage on mount
   useEffect(() => {
     try {
       const stored = localStorage.getItem(STORAGE_KEY)
@@ -44,7 +43,6 @@ export function CallManagerProvider({ children }: { children: ReactNode }) {
     setIsHydrated(true)
   }, [])
 
-  // Save state to localStorage whenever it changes
   useEffect(() => {
     if (isHydrated) {
       try {

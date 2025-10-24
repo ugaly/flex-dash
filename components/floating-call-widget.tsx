@@ -176,7 +176,6 @@ export function FloatingCallWidget() {
             )}
           </div>
 
-          {/* Expanded Participants */}
           {isExpanded && callState === "active" && (
             <div className="mb-4">
               <div className="flex items-center justify-between mb-2">
@@ -219,7 +218,6 @@ export function FloatingCallWidget() {
             </div>
           )}
 
-          {/* Control buttons */}
           <div className={cn(
             "flex items-center justify-center gap-2",
             isExpanded ? "mb-4" : "mb-3"

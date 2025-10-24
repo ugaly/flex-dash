@@ -30,7 +30,6 @@ export function CallPanel({ onClose }: { onClose?: () => void }) {
 
   return (
     <div className="h-full flex flex-col bg-white border-l border-gray-200  shadow-lg overflow-hidden">
-      {/* 🌊 Header Section */}
       <div className="flex-shrink-0 bg-gradient-to-r from-blue-500 to-blue-400 text-white shadow-md">
         <div className="p-4 pb-3">
           <div className="flex items-center justify-between">
@@ -50,7 +49,6 @@ export function CallPanel({ onClose }: { onClose?: () => void }) {
             )}
           </div>
 
-          {/* View Toggle Buttons */}
           <div className="mt-3 flex gap-2">
             <Button
               variant={view === "queue" ? "secondary" : "outline"}
@@ -85,7 +83,6 @@ export function CallPanel({ onClose }: { onClose?: () => void }) {
         </div>
       </div>
 
-      {/* 🧩 Content Section */}
       <div className="flex-1 overflow-y-auto p-4">
         {view === "queue" ? (
           <div className="space-y-2">
@@ -118,7 +115,6 @@ export function CallPanel({ onClose }: { onClose?: () => void }) {
           </div>
         ) : (
           <div className="space-y-4">
-            {/* Input */}
             <div className="relative">
               <Input
                 value={phoneNumber}
@@ -138,7 +134,6 @@ export function CallPanel({ onClose }: { onClose?: () => void }) {
               )}
             </div>
 
-            {/* Dial Pad */}
             <div className="grid grid-cols-3 gap-3">
               {[
                 { digit: "1", letters: "" },
@@ -169,7 +164,6 @@ export function CallPanel({ onClose }: { onClose?: () => void }) {
               ))}
             </div>
 
-            {/* Call Buttons */}
             <div className="flex gap-2 pt-2">
               <Button
                 onClick={handleCall}

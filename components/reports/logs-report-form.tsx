@@ -46,7 +46,6 @@ export function LogsReportForm() {
 
             <div className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Report Dropdown */}
                     <div className="space-y-2">
                         <label className="block text-sm font-semibold text-gray-700">
                             Report <span className="text-red-500">*</span>
@@ -64,7 +63,6 @@ export function LogsReportForm() {
                         </select>
                     </div>
 
-                    {/* Date Range */}
                     <div className="space-y-2">
                         <label className="block text-sm font-semibold text-gray-700">
                             Date <span className="text-red-500">*</span>
@@ -96,7 +94,6 @@ export function LogsReportForm() {
 
                     </div>
 
-                    {/* Queue Dropdown */}
                     <div className="space-y-2">
                         <label className="block text-sm font-semibold text-gray-700">
                             Queue <span className="text-red-500">*</span>
@@ -114,7 +111,6 @@ export function LogsReportForm() {
                         </select>
                     </div>
 
-                    {/* Agent Extension (conditional - only for logs-by-agent) */}
                     {reportType === "logs-by-agent" && (
                         <div className="space-y-2">
                             <label className="block text-sm font-semibold text-gray-700">
@@ -134,7 +130,6 @@ export function LogsReportForm() {
                         </div>
                     )}
 
-                    {/* Desposition Dropdown */}
                     <div className="space-y-2">
                         <label className="block text-sm font-semibold text-gray-700">
                             Desposition <span className="text-red-500">*</span>

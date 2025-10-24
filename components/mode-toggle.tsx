@@ -18,7 +18,6 @@ export function ModeToggle() {
         return
       }
 
-      // Set coordinates from the click event
       if (e) {
         root.style.setProperty("--x", `${e.clientX}px`)
         root.style.setProperty("--y", `${e.clientY}px`)

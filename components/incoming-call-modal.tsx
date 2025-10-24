@@ -12,7 +12,6 @@ export function IncomingCallModal() {
   useEffect(() => {
     if (callState === "incoming") {
       setIsRinging(true)
-      // Auto-reject after 30 seconds
       const timeout = setTimeout(() => {
         rejectCall()
       }, 30000)
@@ -26,17 +25,13 @@ export function IncomingCallModal() {
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center">
-      {/* Backdrop with blur */}
       <div className="absolute inset-0 bg-background/80 backdrop-blur-xl" />
 
-      {/* Incoming call card */}
       <div className="relative w-full max-w-md mx-4">
         <div className="backdrop-blur-2xl bg-gradient-to-br from-background/95 via-background/90 to-background/95 border border-border/50 rounded-3xl shadow-2xl overflow-hidden">
-          {/* Animated gradient background */}
           <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-blue-500/20 to-primary/20 animate-pulse" />
 
           <div className="relative p-8">
-            {/* Caller info */}
             <div className="text-center mb-8">
               <div className="relative inline-block mb-4">
                 <div className="w-24 h-24 rounded-full bg-gradient-to-br from-primary to-blue-500 flex items-center justify-center text-white font-bold text-3xl shadow-2xl">
@@ -54,9 +49,7 @@ export function IncomingCallModal() {
               <p className="text-sm text-muted-foreground mt-2">Incoming call...</p>
             </div>
 
-            {/* Action buttons */}
             <div className="flex items-center justify-center gap-6">
-              {/* Reject button */}
               <div className="flex flex-col items-center gap-2">
                 <Button
                   onClick={rejectCall}
@@ -68,7 +61,6 @@ export function IncomingCallModal() {
                 <span className="text-xs text-muted-foreground">Decline</span>
               </div>
 
-              {/* Answer button */}
               <div className="flex flex-col items-center gap-2">
                 <Button
                   onClick={answerCall}

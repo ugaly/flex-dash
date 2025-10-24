@@ -18,7 +18,6 @@ interface TimerState {
 }
 
 export default function StatusDropdown() {
-  // ✅ Default status is "not ready"
   const [status, setStatus] = useState<StatusType>("not ready");
   const [timers, setTimers] = useState<TimerState>({
     ready: 0,
@@ -98,7 +97,6 @@ export default function StatusDropdown() {
         </DropdownMenuContent>
       </DropdownMenu>
 
-      {/* Active timer beside dropdown */}
       <span
         className={cn(
           "text-sm font-medium",
