@@ -54,7 +54,7 @@ export default function SettingsPage() {
       title: "Queue",
       description: "Manage call queues and queue settings for inbound calls",
       icon: <List className="h-8 w-8" />,
-      route: "/settings/queue",
+      route: "/dashboard/settings/queues",
     },
     {
       title: "Configurations",
