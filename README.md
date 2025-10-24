@@ -1,30 +1,26 @@
-# Pro system design
+# Flex Dashboard (React Conversion Project)
 
-*Automatically synced with your [v0.app](https://v0.app) deployments*
+This is a React-based conversion of the original Flex Blade system.  
+The goal is to modernize the interface and structure while maintaining the original functionality.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/jowzey26s-projects/v0-pro-system-design)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.app/chat/projects/mIqU85yUmKU)
+---
 
-## Overview
+## 🚀 Quick Start
 
-This repository will stay in sync with your deployed chats on [v0.app](https://v0.app).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.app](https://v0.app).
+Follow the steps below to get the project running locally:
 
-## Deployment
+```bash
+# 1️⃣ Clone the repository
+git clone https://github.com/ugaly/flex-dash.git
 
-Your project is live at:
+# 2️⃣ Navigate into the project folder
+cd flex-dash
 
-**[https://vercel.com/jowzey26s-projects/v0-pro-system-design](https://vercel.com/jowzey26s-projects/v0-pro-system-design)**
+# 3️⃣ Install dependencies
+npm install
 
-## Build your app
+# 4️⃣ (Optional) If you face dependency conflicts, run:
+npm install --force
 
-Continue building your app on:
-
-**[https://v0.app/chat/projects/mIqU85yUmKU](https://v0.app/chat/projects/mIqU85yUmKU)**
-
-## How It Works
-
-1. Create and modify your project using [v0.app](https://v0.app)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+# 5️⃣ Start the development server
+npm run dev
