@@ -17,7 +17,6 @@ export default function IVRSettingsPage() {
   const router = useRouter()
   const [searchQuery, setSearchQuery] = useState("")
 
-  // Mock data - replace with actual data fetching
   const ivrs: IVR[] = [
     { id: 1, name: "ZssfEnglish", description: "Zssf English IVR" },
     { id: 2, name: "ZssfSw", description: "Zssf Swahili Queue" },
@@ -57,7 +56,6 @@ export default function IVRSettingsPage() {
   }
 
   const handleDeleteIVR = (id: number) => {
-    // Implement delete functionality
     console.log("Delete IVR:", id)
   }
 

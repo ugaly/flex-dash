@@ -15,7 +15,6 @@ export default function CampaignCustomersPage() {
   const campaignId = params.id as string
   const fileInputRef = useRef<HTMLInputElement>(null)
 
-  // Mock campaign data - in real app, fetch based on campaignId
   const [campaignData] = useState({
     title: "new product",
     campaignTime: "2025-09-11 17:00 - 2025-09-18 20:00",
@@ -55,18 +54,15 @@ export default function CampaignCustomersPage() {
     const file = e.target.files?.[0]
     if (file) {
       console.log("[v0] File selected:", file.name)
-      // Handle CSV/Excel import here
     }
   }
 
   const handleImport = () => {
     console.log("[v0] Importing customers...")
-    // Handle import logic
   }
 
   const handleDownloadSample = () => {
     console.log("[v0] Downloading sample CSV...")
-    // Handle sample download
   }
 
   const handleDeleteSelected = () => {

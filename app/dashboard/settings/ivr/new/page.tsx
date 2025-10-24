@@ -49,7 +49,6 @@ export default function NewIVRPage() {
   }
 
   const handleSave = () => {
-    // Implement save functionality
     console.log("Save IVR")
     router.push("/dashboard/settings/ivr")
   }

@@ -17,7 +17,6 @@ export default function PermissionsPage() {
   const router = useRouter()
   const [searchQuery, setSearchQuery] = useState("")
 
-  // Mock data - replace with actual data fetching
   const roles: Role[] = [
     {
       id: 1,

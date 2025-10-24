@@ -13,7 +13,6 @@ export default function EditQueuePage() {
   const params = useParams()
   const [activeTab, setActiveTab] = useState("basic")
 
-  // Mock data - replace with actual data fetching based on params.id
   const queueId = params.id
 
   const tabs = [
@@ -26,7 +25,6 @@ export default function EditQueuePage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
     console.log("Queue updated", queueId)
     router.push("/queues")
   }

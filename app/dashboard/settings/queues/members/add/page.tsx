@@ -16,7 +16,6 @@ export default function AddQueueMemberPage() {
   const params = useParams()
   const router = useRouter()
 
-  // Mock data - replace with actual data fetching
   const queueName = "SMARTQUEUE"
   const [members, setMembers] = useState<AvailableMember[]>([
     { id: 1, extension: "8112", name: "Nosipho Baloyi", skills: 10, selected: false },

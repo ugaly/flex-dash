@@ -12,12 +12,10 @@ export default function MissedCallsPage() {
 
   return (
     <div className="h-screen flex relative bg-background">
-      {/* Main Content Section */}
       <div
         className="relative transition-all duration-300 ease-in-out"
         style={{ width: showPanel ? `${100 - panelWidth}%` : "100%" }}
       >
-        {/* Header */}
         <div className="border-b border-border p-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Phone className="h-6 w-6 text-primary" />
@@ -61,7 +59,6 @@ export default function MissedCallsPage() {
         </div>
       </div>
 
-      {/* Shared Call Manager Panel */}
       {showPanel && <SharedCallManagerPanel />}
     </div>
   )
